@@ -3,4 +3,6 @@
 public interface IConsoleScreen
 {
     void Launch();
+    void ShowHeader();
+    void ShowFooter();
 }
