@@ -5,10 +5,53 @@ namespace ICETask02.Views;
 public class TaskScreen2
     : IConsoleScreen
 {
+#region Fields
+
+    public HashSet<string> Codes = [
+        "PROG1A",
+        "PROG1B",
+        "PROG1C",
+        "PROG2A",
+        "PROG2B",
+        "PROG2C",
+        "PROG3A",
+        "PROG3B",
+        "PROG3C"
+    ];
+
+#endregion
+
 #region Lifecycle
 
     public void Launch() {
-        throw new NotImplementedException();
+        ShowHeader();
+        TryAddDuplicateToShowIgnoredAttempts();
+
+        var table = new Table()
+            .Border(TableBorder.Rounded)
+            .Title("[bold underline aqua]Set of Courses[/]")
+            .AddColumn("Course Code");
+
+        foreach (var code in Codes) {
+            table.AddRow(code);
+        }
+
+        AnsiConsole.Write(table);
+        ShowFooter();
+    }
+
+#endregion
+
+#region Helpers
+
+    /// <summary>
+    /// This method attempts to add duplicates to the set to show how the
+    /// attempt is ignored as all values must be unique.
+    /// </summary>
+    private void TryAddDuplicateToShowIgnoredAttempts() {
+        Codes.Add("PROG3A");
+        Codes.Add("PROG3B");
+        Codes.Add("PROG3C");
     }
 
 #endregion
