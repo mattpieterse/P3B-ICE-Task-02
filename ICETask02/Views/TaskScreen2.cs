@@ -7,7 +7,7 @@ public class TaskScreen2
 {
 #region Fields
 
-    public HashSet<string> Codes = [
+    private readonly HashSet<string> _codes = [
         "PROG1A",
         "PROG1B",
         "PROG1C",
@@ -32,7 +32,7 @@ public class TaskScreen2
             .Title("[bold underline aqua]Set of Courses[/]")
             .AddColumn("Course Code");
 
-        foreach (var code in Codes) {
+        foreach (var code in _codes) {
             table.AddRow(code);
         }
 
@@ -49,9 +49,9 @@ public class TaskScreen2
     /// attempt is ignored as all values must be unique.
     /// </summary>
     private void TryAddDuplicateToShowIgnoredAttempts() {
-        Codes.Add("PROG3A");
-        Codes.Add("PROG3B");
-        Codes.Add("PROG3C");
+        _codes.Add("PROG3A");
+        _codes.Add("PROG3B");
+        _codes.Add("PROG3C");
     }
 
 #endregion
